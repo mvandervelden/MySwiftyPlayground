@@ -1,4 +1,8 @@
-//: Some algorithms for breakfast
+/*:
+
+ Some algorithms for breakfast
+
+ */
 
 //: [Previous](@previous)
 

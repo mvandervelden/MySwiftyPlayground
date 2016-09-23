@@ -1,4 +1,8 @@
-//: Functional programming finger food
+/*:
+
+ Functional programming finger food
+
+ */
 
 import Foundation
 
@@ -10,9 +14,8 @@ array.reduce([]) { (result, val) -> [Int] in
 }
 
 //: Shorthand, not very readable
-let fRev = array.reduce([]) { [$1] + $0 }
-fRev
-
+let reverse = array.reduce([]) { [$1] + $0 }
+reverse
 
 //: Max
 array.reduce(0) { (result, val) -> Int in
@@ -30,11 +33,11 @@ array.enumerated().filter { (offset, _) -> Bool in
 }
 
 //: Shorthand, this time it reads kinda nice
-let fEven = array
+let even = array
     .enumerated()
     .filter { $0.offset % 2 == 0 }
     .map { $0.element }
-fEven
+even
 
 //: Running total
 array.reduce([0]) { (result, int) in
@@ -42,18 +45,17 @@ array.reduce([0]) { (result, int) in
 }.dropFirst()
 
 //: Non-running Total
-let fTotal = array.reduce(0) {  $0 + $1 }
-fTotal
-
+let total = array.reduce(0) {  $0 + $1 }
+total
 
 //: onAll, generic, using map
-func on<T>(all array: [T], perform function:(_ element:T) -> T ) -> [T] {
+func on<T, U>(all array: [T], perform function:(_ element:T) -> U ) -> [U] {
     return array.map(function)
 }
 
 //: Call onAll with anonymous function
-let fDouble = on(all: array) { $0 * 2 }
-fDouble
+let times2 = on(all: array) { $0 * 2 }
+times2
 
 //: onAll with named function
 func squared(val: Int) -> Int {
@@ -61,6 +63,4 @@ func squared(val: Int) -> Int {
 }
 on(all: array, perform: squared)
 
-
 //: [Next](@next)
-
