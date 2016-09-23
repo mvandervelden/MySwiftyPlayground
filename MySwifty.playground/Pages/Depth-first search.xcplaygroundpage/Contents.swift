@@ -14,7 +14,7 @@ let ingredients = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 typealias Equation = String
 
-struct TResult : CustomStringConvertible {
+struct PartialEquation : CustomStringConvertible {
     let value: Int
     let equation: Equation
     var description: String {
@@ -24,7 +24,7 @@ struct TResult : CustomStringConvertible {
     }
 }
 
-enum Operations : String {
+enum SearchOperation : String {
     case plus = "+"
     case minus = "-"
     case cat = ""
@@ -45,14 +45,14 @@ enum Operations : String {
     }
 }
 
-func combine(partial result: TResult, and next:Int, with nextRemainder: [Int]) -> [TResult] {
-    return [Operations.plus, .minus, .cat].flatMap { (operation) -> [TResult] in
-        let nextPartialResult = TResult(value: operation.execute(result.value, next), equation: operation.describe(result.equation, with: next.description))
+func combine(partial result: PartialEquation, and next:Int, with nextRemainder: [Int]) -> [PartialEquation] {
+    return [SearchOperation.plus, .minus, .cat].flatMap { (operation) -> [PartialEquation] in
+        let nextPartialResult = PartialEquation(value: operation.execute(result.value, next), equation: operation.describe(result.equation, with: next.description))
         return combine(partial: nextPartialResult, with: nextRemainder)
     }
 }
 
-func combine(partial result: TResult, with remainder: [Int]) -> [TResult] {
+func combine(partial result: PartialEquation, with remainder: [Int]) -> [PartialEquation] {
     if let next = remainder.first {
         return combine(partial: result, and: next, with: Array(remainder.dropFirst()))
     } else if result.value == expectedResult {
@@ -63,10 +63,9 @@ func combine(partial result: TResult, with remainder: [Int]) -> [TResult] {
 }
 
 func findCombo(with array:[Int]) -> [String] {
-    return combine(partial: TResult(value:array[0], equation: array[0].description), with: Array(array.dropFirst())).map { $0.description }
+    return combine(partial: PartialEquation(value:array[0], equation: array[0].description), with: Array(array.dropFirst())).map { $0.description }
 }
 
-let results = findCombo(with: ingredients)
-results
+findCombo(with: ingredients)
 
 //: [Next](@next)
