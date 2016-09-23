@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' auto-termination-delay='8' display-mode='rendered'>
+<playground version='6.0' target-platform='ios' auto-termination-delay='8' display-mode='raw'>
     <pages>
         <page name='Functional Programming'/>
+        <page name='Algorithms'/>
         <page name='Depth-first search'/>
     </pages>
 </playground>

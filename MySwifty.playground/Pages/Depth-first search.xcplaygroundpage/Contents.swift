@@ -1,3 +1,5 @@
+//: How to combine the array 1 2 3 4 5 6 7 8 9 into an equation that results in 100, using operation '1+2', '1-2' and '12'? Find all results
+
 //: [Previous](@previous)
 
 import Foundation
