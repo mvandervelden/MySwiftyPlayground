@@ -8,6 +8,15 @@ import Foundation
 
 let array = [8,3,5,2,8,4]
 
+var adder: (String, Int) -> String = { (result, value) -> String in
+    dump(result)
+    print(value)
+    return result + "\(value)"
+}
+
+array.reduce(0, +)
+
+
 //: Reverse array
 array.reduce([]) { (result, val) -> [Int] in
     [val] + result

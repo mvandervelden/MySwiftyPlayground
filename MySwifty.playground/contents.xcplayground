@@ -4,5 +4,10 @@
         <page name='Functional Programming'/>
         <page name='Algorithms'/>
         <page name='Depth-first search'/>
+        <page name='Mocking'/>
+        <page name='Bit shifting'/>
+        <page name='CLLocation'/>
+        <page name='Preprocessor'/>
+        <page name='Generics'/>
     </pages>
 </playground>
